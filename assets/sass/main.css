@@ -1,0 +1,61 @@
+html {
+  font-size: 62.5%; }
+
+body {
+  font-weight: 400;
+  word-spacing: .2rem;
+  letter-spacing: .1rem;
+  margin: 0;
+  padding: 0; }
+
+.flex {
+  display: flex;
+  justify-content: space-between; }
+
+.text--xs {
+  font-size: 1.2rem; }
+.text--sm {
+  font-size: 1.4rem; }
+.text--lg {
+  font-size: 1.6rem; }
+
+.cart__skew {
+  transform: skew(15deg, 15deg);
+  height: 1.4rem; }
+
+.bg--orange {
+  background: #ff9346; }
+.bg--dgr {
+  background: #cc1919; }
+
+.button {
+  display: inline;
+  border-color: transparent;
+  color: #fff;
+  border-radius: 10%;
+  padding: 0 1rem; }
+  .button--sm {
+    font-size: 1.3rem; }
+
+.checkout {
+  display: none; }
+
+.checkout {
+  display: none; }
+
+.card {
+  font-size: 1.4rem; }
+  .card--image {
+    height: 18rem; }
+  .card--para {
+    height: 4rem;
+    overflow: hidden; }
+
+.font--comforta {
+  font-family: 'Comfortaa', cursive; }
+.font--cinzel {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 2.4rem; }
+
+/*# sourceMappingURL=main.css.map */

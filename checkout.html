@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SHOPPING CART</title>
+    <link rel="stylesheet" type="text/css" href="./assets/sass/main.css">
+    
+
+    <!-----------------------------ADDITIONAL LINKS AND RESOURCES------------------------->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/js/default.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!---------------------------------------F O N T S------------------------------------->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!----------------------------------------I C O N S------------------------------------>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+</head>
+
+<body>
+<div class="checkoutPage text--sm mt-5">
+	<div class="container">
+		<div class="bg-dark text-white">
+		<h2 class="text-center">Checkout With PayPal</h2>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_cart">
+			<input type="hidden" name="upload" value="1">
+			<input type="hidden" name="business" value="kumarindenmark@gmail.com">
+			
+			<div class="">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Item Name</th>
+						<th>Price</th>
+						<th>Qty</th>
+						<th>Sub Total</th>
+					</tr>
+				</thead>
+				<tbody class="displayItem">
+					<!--DYNAMIC JQUERY ITEM INFORMATIONS IN TABLE -->
+				</tbody>
+			</table>
+		</div>
+		<input class="float-right text-white bg-warning btn btn-lg" type="submit" value="PayPal">
+		</form>
+	</div>
+	</div>
+</div>
+
+
+		
+		<script type="text/javascript">
+		
+		// Shopping Cart Array
+			var shopCartArray = [];
+		
+			$(document).ready(function(){
+				function outputInfo(){
+					if(sessionStorage["scart"]!=null){
+						shopCartArray = JSON.parse(sessionStorage["scart"].toString());
+						
+					}
+					// NULL OR DEFAULT VALUES
+					var qty = 0;
+					var subTotal = 0;
+					var total = 0;
+					var disItemInHtml = '';
+					// LOOPING HERE
+					$.each(shopCartArray, function(i, val){
+					//console.log(val)
+					// OUTPUT DEFAULT VALUES TO DYNAMIC
+					paypalIndex = (i+1);
+					qty += parseInt(val.qty);
+					subTotal = val.qty*val.price;
+					total += subTotal;
+					disItemInHtml += `<tr>
+								<td><input type="hidden" name="item_name_${paypalIndex}" value="${val.name}"> ${val.name}</td>
+								<td><input type="hidden" name="amount_${paypalIndex}" value="${val.price}"> ${val.price}</td>
+								<td><input type="hidden" name="quantity_${paypalIndex}" value="${val.qty}"> ${val.qty}</td>
+								<td>${currency(subTotal)}</td>
+						</tr>`;
+						})
+						// DISPLAY DYNAMIC VALUES
+						disItemInHtml += `<tr><td colspan="3" class="text-right">Total Price: </td><td>${currency(total)}</td></tr>`
+						$('.finalItemsQty').html(`Total Items: ${qty}`);
+						$('.finalTotal').html(`Total Price: ${currency(total)}`);
+						$('.displayItem').html(disItemInHtml);
+					}
+					outputInfo();
+						function currency(n){
+						return `DKK: ${(n).toFixed(2)}`;
+						}
+					
+					})
+		</script>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
