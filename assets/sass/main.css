@@ -19,34 +19,11 @@ body {
 .text--lg {
   font-size: 1.6rem; }
 
-.cart__skew {
-  transform: skew(15deg, 15deg);
-  height: 1.4rem; }
-
 .bg--orange {
   background: #ff9346; }
-.bg--dgr {
-  background: #cc1919; }
-
-.button {
-  display: inline;
-  border-color: transparent;
-  color: #fff;
-  border-radius: 10%;
-  padding: 0 1rem; }
-  .button--sm {
-    font-size: 1.3rem; }
-
-.checkout {
-  display: none; }
-
-.checkout {
-  display: none; }
 
 .card {
   font-size: 1.4rem; }
-  .card--image {
-    height: 18rem; }
   .card--para {
     height: 4rem;
     overflow: hidden; }
@@ -57,5 +34,13 @@ body {
   font-family: 'Cinzel', serif;
   font-weight: 700;
   font-size: 2.4rem; }
+
+.carousel-item {
+  width: 100%;
+  height: 400px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
 
 /*# sourceMappingURL=main.css.map */
