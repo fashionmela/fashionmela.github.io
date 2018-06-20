@@ -21,6 +21,10 @@ body {
 
 .bg--orange {
   background: #ff9346; }
+.bg--orange:hover {
+  background: #bf5910; }
+.bg--orange:active {
+  background: red; }
 
 .card {
   font-size: 1.4rem; }
