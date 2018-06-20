@@ -62,7 +62,9 @@
                         }
                         // REMOVE PARTICULAR ITEM
                         $('.displayItem').on('click', '.removeShopCartArray', function(){
-                            shopCartArray.splice($(this),1)
+                            var itemInfo = $(this.dataset)[0];
+                            var delItemOnClick = $('.removeShopCartArray').index(this);
+                            shopCartArray.splice(delItemOnClick,1)
                             sessionStorage["scart"] = JSON.stringify(shopCartArray);
                             outputInfo();
                         })
